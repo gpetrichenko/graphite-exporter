@@ -3,15 +3,19 @@
 This is a exporter for prometheus. Unlike the official exporter, it queries graphite instead of receiving graphite metrics.
 
 You provide graphite queries to the exporter. If you call the metrics endpoint, it queries graphite and exposes the results.
+## Buil docker in DockerFile
+ '''bash
+ docker build -t esm_graphite-exporter .
+'''
 
 ## Run in Docker
 
-```Shell
+```bash
 docker run -d \
--v /path/to/config.yml:/app/config/config.yml:ro \
+-v /path/to/config.yml:/config/config.yml:ro \
 -v /path/to/certificate/my-cert:/etc/certs/root.cer \
 -p 8080:8080 \
-tomldev/graphite-exporter
+esm_graphite-exporter
 ```
 
 or use a compose file:
@@ -25,7 +29,7 @@ networks:
 
 services:
   graphiteexporter:
-    image: tomldev/graphite-exporter:v2.0.0
+    image: esm_graphite-exporter
     networks:
       - networkname
     ports:
