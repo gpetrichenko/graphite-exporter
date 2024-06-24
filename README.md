@@ -3,10 +3,12 @@
 This is a exporter for prometheus. Unlike the official exporter, it queries graphite instead of receiving graphite metrics.
 
 You provide graphite queries to the exporter. If you call the metrics endpoint, it queries graphite and exposes the results.
-## Buil docker in DockerFile
- '''bash
+
+## Build docker in DockerFile
+
+```bash
  docker build -t esm_graphite-exporter .
-'''
+```
 
 ## Run in Docker
 
