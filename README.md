@@ -37,7 +37,7 @@ services:
     ports:
       - "9999:8080"
     volumes:
-      - ./config.yml:/app/config/config.yml
+      - ./config.yml:/config/config.yml
       - ./certs/my-cert.cer:/etc/certs/root.cer
 ```
 
