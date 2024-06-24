@@ -62,7 +62,7 @@ type GraphiteResponse struct {
 
 func getConfig() {
 	Log.Info("Getting config")
-	yml, err := ioutil.ReadFile("./config/config.yml")
+	yml, err := ioutil.ReadFile("/config/config.yml")
 	check(err)
 
 	err = yaml.Unmarshal(yml, &cfg)
