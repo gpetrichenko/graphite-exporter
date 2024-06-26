@@ -1,0 +1,16 @@
+version: '3.3'
+
+networks:
+  networkname:
+    external: true
+
+services:
+  graphiteexporter:
+    image: esm_graphite-exporter
+    networks:
+      - networkname
+    ports:
+      - "9999:8080"
+    volumes:
+      - ./config.yml:/config/config.yml
+      - ./certs/my-cert.cer:/etc/certs/root.cer
