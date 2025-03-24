@@ -17,7 +17,7 @@ func (t Target) init(g Graphite) {
 	// TODO: check if labels give errors and no duplicate labels
 	constantLabels := append(t.Labels, g.Labels...)
 
-	ns := t.getNamespaces()
+	ns := "graphite_exporter" // Устанавливаем пространство имен в "graphite_exporter"
 
 	wildcardValues := getValuesFromArray(t.Wildcards, ":")
 	customLabels := append(wildcardValues, "target")
@@ -65,19 +65,4 @@ func (t Target) getWildcardValues(data GraphiteResponse) []string {
 	}
 	output = append(output, target)
 	return output
-}
-func (t Target) getNamespaces() string {
-	defaultNs := "graphite_exporter"
-	ns := defaultNs
-	if graphites[t.GraphiteName].Namespace != "" {
-		ns = graphites[t.GraphiteName].Namespace
-	}
-	if t.Namespace != "" {
-		if ns == defaultNs {
-			ns = t.Namespace
-		} else {
-			ns += "_" + t.Namespace
-		}
-	}
-	return ns
 }
